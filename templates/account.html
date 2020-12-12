@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col s12 m6">
+      <div class="card-panel">
+        <div class="card-content black-text">
+          <h3 class="card-title">Welcome, {{ username }}</h3>
+          <p>This is your Online Cook Book account.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">Add Recipe</a>
+          <a href="{{ url_for('index') }}">Go to Recipes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            
+
+{% endblock %}
