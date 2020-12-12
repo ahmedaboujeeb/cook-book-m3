@@ -23,20 +23,28 @@
               <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a class="black-text" href="{{ url_for('index') }}">Recipes</a></li>
+                {% if session.user %}
                 <li><a class="black-text" href="{{ url_for('account', username=session['user']) }}">Account</a></li>
                 <li><a class="black-text" href="">Add Recipe</a></li>
+                <li><a class="black-text" href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
                 <li><a class="black-text" href="{{ url_for('login') }}">Log In</a></li>
                 <li><a class="black-text" href="{{ url_for('signup') }}">Sign Up</a></li>
+                {% endif %}
               </ul>
             </div>
           </nav>
         
           <ul class="sidenav" id="mobile-demo">
             <li><a class="black-text" href="{{ url_for('index') }}">Recipes</a></li>
+                {% if session.user %}
                 <li><a class="black-text" href="{{ url_for('account', username=session['user']) }}">Account</a></li>
                 <li><a class="black-text" href="">Add Recipe</a></li>
+                <li><a class="black-text" href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
                 <li><a class="black-text" href="{{ url_for('login') }}">Log In</a></li>
                 <li><a class="black-text" href="{{ url_for('signup') }}">Sign Up</a></li>
+                {% endif %}
           </ul>
         
     </header>
@@ -50,7 +58,7 @@
         {% if messages %}
         {% for message in messages %}
         <div class="row">
-            <h4 class="red-text">{{ message }}</h4>
+            <h4 class="red-text center-align">{{ message }}</h4>
         </div>
         {% endfor %}
         {% endif %}

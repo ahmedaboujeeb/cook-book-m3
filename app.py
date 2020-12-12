@@ -58,7 +58,7 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
+                    flash("Logged In!")
                     return redirect(url_for("account", username=session["user"]))
 
             else:
@@ -80,6 +80,13 @@ def account(username):
     if session["user"]:
         return render_template("account.html", username=username)
 
+    return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    flash("Logged Out!")
+    session.pop("user")
     return redirect(url_for("login"))
 
 if __name__ == "__main__":
